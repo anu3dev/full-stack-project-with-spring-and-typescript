@@ -1,7 +1,9 @@
 # full-stack-project-with-spring-and-typescript
 
-## jkvjdfn jhbvjd
+### application features
 
-### nfdkj kjdfk jfvdj
+- 
 
-- jhvjdhfvjhd hdjfhsd
+### run repo using below steps
+
+- 
