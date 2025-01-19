@@ -1,9 +1,11 @@
 # full-stack-project-with-spring-and-typescript
 
-### application features
+## application features
+
+### frontend
 
 - 
 
-### run repo using below steps
+### backend
 
 - 
