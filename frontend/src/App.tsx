@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import getRoutingPath from "./route/routes";
+import getRoutingPath from "./route";
 
 const App = () => {
   const getRoute = () => {
