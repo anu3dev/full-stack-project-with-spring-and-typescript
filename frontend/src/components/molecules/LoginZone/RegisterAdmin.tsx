@@ -43,7 +43,6 @@ const RegisterAdmin: React.FC = () => {
             <input type="text" id="password" name="password" required />
           </>
         )}
-
         <button type="submit" onClick={handleBtnClick}>
           Register
         </button>
@@ -54,7 +53,7 @@ const RegisterAdmin: React.FC = () => {
         </p>
         <hr></hr>
         <p>
-                  &#8658; Are you an user? <a href="/register-user">Register here</a>
+          &#8658; Are you an user? <a href="/register-user">Register here</a>
         </p>
       </div>
     </div>
