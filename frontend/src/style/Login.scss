@@ -1,80 +1,81 @@
 .login-zone-screen {
-    margin: 2rem auto;
-    max-width: 30rem;
-    padding: 1.25rem;
-    border: 1px solid #ccc;
-    border-radius: .75rem;
-    box-shadow: 0 0 .75rem rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+  margin: 2rem auto;
+  max-width: 30rem;
+  padding: 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 
-    h2 {
-        text-align: center;
-        margin-bottom: 1rem;
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .helpher-text {
+      font-size: 0.75rem;
+      font-weight: 600;
+
+      span {
+        color: red;
+      }
     }
 
-    form {
-        display: flex;
-        flex-direction: column;
-
-        .helpher-text {
-            font-size: .75rem;
-            font-weight: 600;
-
-            span {
-                color: red;
-            }
-        }
-
-        label {
-            margin-top: 1rem;
-            margin-bottom: .25rem;
-            font-weight: bold;
-        }
-    
-        select {
-            padding: .75rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-    
-        input[type="text"], input[type="password"] {
-            padding: .75rem 1rem;
-            border: 1px solid #ccc;
-            border-radius: .25rem;
-            font-size: 1rem;
-        }
-    
-        button {
-            margin-top: 1.5rem;
-            padding: .75rem;
-            border: none;
-            border-radius: .25rem;
-            background-color: #007bff;
-            color: #fff;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-    
-        button:hover {
-            background-color: #0056b3;
-        }
+    label {
+      margin-top: 1rem;
+      margin-bottom: 0.25rem;
+      font-weight: bold;
     }
 
-    .additional-links {
-        margin-top: 1.5rem;
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        hr {
-            margin: .5rem 0;
-        }
+    select {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
     }
+
+    input[type='text'],
+    input[type='password'] {
+      padding: 0.75rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.25rem;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  .additional-links {
+    margin-top: 1.5rem;
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      margin: 0.5rem 0;
+    }
+  }
 }
