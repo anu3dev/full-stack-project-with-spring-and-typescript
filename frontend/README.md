@@ -64,3 +64,8 @@ const getRoutingPath = () => {
 }
 export default getRoutingPath;
 ```
+
+### prettier setup
+
+- installed related packages and add format script 
+- npm run format 
