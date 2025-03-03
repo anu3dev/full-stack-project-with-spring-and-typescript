@@ -18,11 +18,10 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserLogin user = dao.findByUsername(username);
+        System.out.print("user"+ user);
         if (user == null) {
-            System.out.println("User Not Found");
             throw new UsernameNotFoundException("user not found");
         }
-        
         return new UserPrincipal(user);
     }
 }

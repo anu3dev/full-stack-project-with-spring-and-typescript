@@ -10,8 +10,8 @@ public class UserLogin {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    @Column(name="company_id")
-    private String companyId;
+    //@Column(name="company_id")
+    //private String companyId;
     private String username;
     private String password;
 }
