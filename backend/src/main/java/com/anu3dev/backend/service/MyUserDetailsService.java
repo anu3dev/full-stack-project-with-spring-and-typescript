@@ -1,7 +1,7 @@
 package com.anu3dev.backend.service;
 
 import com.anu3dev.backend.dao.UserLoginDAO;
-import com.anu3dev.backend.model.UserLogin;
+import com.anu3dev.backend.model.User;
 import com.anu3dev.backend.model.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +17,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserLogin user = dao.findByUsername(username);
+        User user = dao.findByUsername(username);
         System.out.print("user"+ user);
         if (user == null) {
             throw new UsernameNotFoundException("user not found");

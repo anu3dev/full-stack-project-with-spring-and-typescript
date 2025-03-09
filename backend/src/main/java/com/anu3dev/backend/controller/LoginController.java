@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/login/v1/")
 public class LoginController {
@@ -14,18 +15,8 @@ public class LoginController {
     @Autowired
     private ILoginService loginService;
 
-    @PostMapping("/register-company")
-    public String registerCompany(@RequestBody Company company) throws Exception  {
-        return loginService.registerCompany(company);
-    }
-
     @GetMapping("/get-company-list")
     public List<Company> getCompanyList() {
         return loginService.getCompanyList();
-    }
-
-    @GetMapping("/get-approved-company-list")
-    public List<Company> getApprovedCompanyList() {
-        return loginService.getApprovedCompanyList();
     }
 }

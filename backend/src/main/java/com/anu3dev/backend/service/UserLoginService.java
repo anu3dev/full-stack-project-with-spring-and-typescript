@@ -1,7 +1,7 @@
 package com.anu3dev.backend.service;
 
 import com.anu3dev.backend.dao.UserLoginDAO;
-import com.anu3dev.backend.model.UserLogin;
+import com.anu3dev.backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,16 +23,16 @@ public class UserLoginService {
 
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
     
-    public String register(UserLogin user) {
+    public String register(User user) {
         user.setPassword(encoder.encode(user.getPassword()));
         dao.save(user);
         return "registration successful";
     }
     
-    public String verify(UserLogin user) {
-        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+    public String verify(User user) {
+        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmailId(), user.getPassword()));
         if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(user.getUsername());
+            return jwtService.generateToken(user.getEmailId());
         } else {
             return "fail";
         }

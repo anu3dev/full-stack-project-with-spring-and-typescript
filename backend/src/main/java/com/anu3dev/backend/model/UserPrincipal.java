@@ -11,9 +11,9 @@ import java.util.Collections;
 public class UserPrincipal implements UserDetails {
     @Serial
 	private static final long serialVersionUID = 1L;
-	private final UserLogin user;
+	private final User user;
 
-    public UserPrincipal(UserLogin user) {
+    public UserPrincipal(User user) {
         this.user = user;
     }
 
@@ -29,7 +29,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return user.getEmailId();
     }
 
     @Override
