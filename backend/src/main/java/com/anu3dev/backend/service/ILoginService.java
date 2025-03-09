@@ -10,4 +10,5 @@ public interface ILoginService {
     List<Company> getCompanyList();
     List<Company> getApprovedCompanyList();
     String registerUser(User user) throws Exception;
+    String verifyUserLogin(User user);
 }

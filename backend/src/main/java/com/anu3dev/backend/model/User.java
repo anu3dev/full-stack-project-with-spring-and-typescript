@@ -15,7 +15,7 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    private long universalId;
+    private long uniqueId;
     private String approvalStatus;
     private String approvedBy;
     private String isCompanyAdmin;

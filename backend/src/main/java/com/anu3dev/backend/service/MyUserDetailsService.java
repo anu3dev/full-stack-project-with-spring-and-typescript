@@ -1,6 +1,6 @@
 package com.anu3dev.backend.service;
 
-import com.anu3dev.backend.dao.UserLoginDAO;
+import com.anu3dev.backend.dao.UserDao;
 import com.anu3dev.backend.model.User;
 import com.anu3dev.backend.model.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +13,11 @@ import org.springframework.stereotype.Service;
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserLoginDAO dao;
+    private UserDao userDao;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = dao.findByUsername(username);
-        System.out.print("user"+ user);
+    public UserDetails loadUserByUsername(String emailId) throws UsernameNotFoundException {
+        User user = userDao.findByEmailId(emailId);
         if (user == null) {
             throw new UsernameNotFoundException("user not found");
         }

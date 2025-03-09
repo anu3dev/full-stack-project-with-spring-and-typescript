@@ -12,7 +12,7 @@ public class Company {
     private long Id;
     private String companyEmail;
     private String companyName;
-    private String uniqueId;
+    private String companyUniqueId;
     private String approvalStatus;
     private String approvedBy;
 }
