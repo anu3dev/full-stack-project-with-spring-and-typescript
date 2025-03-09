@@ -12,6 +12,7 @@ public class EmailContact {
 	private long Id;
 	@Column(name="email_id")
 	private String emailId;
-	@Column(columnDefinition="TEXT")
+	@Lob
+	@Column(columnDefinition = "LONGTEXT")
 	private String message;
 }
