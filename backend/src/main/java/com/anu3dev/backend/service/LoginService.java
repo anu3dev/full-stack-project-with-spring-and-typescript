@@ -2,9 +2,11 @@ package com.anu3dev.backend.service;
 
 import com.anu3dev.backend.dao.CompanyDao;
 import com.anu3dev.backend.dao.UserDao;
+import com.anu3dev.backend.exception.ResourceNotFoundException;
 import com.anu3dev.backend.model.Company;
 import com.anu3dev.backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -12,7 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -94,5 +98,39 @@ public class LoginService implements ILoginService {
         } else {
             return "failure";
         }
+    }
+
+    public List<User> getAllUsers() {
+        return userDao.findAll();
+    }
+
+    public User saveUserData(User user) {
+        return userDao.save(user);
+    }
+
+    public ResponseEntity<User> getUserData(int id) {
+        User user = userDao.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: "+ id));
+        return ResponseEntity.ok(user);
+    }
+
+    public ResponseEntity<User> updateUserData(int id, User user) {
+        User userDetail = userDao.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: "+ id));
+        userDetail.setFirstName(user.getFirstName());
+        userDetail.setLastName(user.getLastName());
+        userDetail.setEmailId(user.getEmailId());
+
+        User updatedUser = userDao.save(userDetail);
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    public ResponseEntity<Map<String, Boolean>> deleteUserData(int id) {
+        User emp = userDao.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: "+ id));
+        userDao.delete(emp);
+        Map<String, Boolean> res = new HashMap<String, Boolean>();
+        res.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(res);
     }
 }

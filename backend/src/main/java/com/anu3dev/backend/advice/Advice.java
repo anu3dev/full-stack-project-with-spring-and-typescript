@@ -54,21 +54,20 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.anu3dev.backend.exception.ResourceNotFoundException;
-import com.anu3dev.backend.model.APIErrorDetails;
+import com.anu3dev.backend.model.APIError;
 
 @RestControllerAdvice
 public class Advice {
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<APIErrorDetails> handleAllProblem(Exception e){
-		APIErrorDetails details = new APIErrorDetails(LocalDateTime.now(), e.getMessage(), "INTERNAL_SERVER_ERROR");
-		return new ResponseEntity<APIErrorDetails>(details, HttpStatus.INTERNAL_SERVER_ERROR);
+	public ResponseEntity<APIError> handleAllProblem(Exception e){
+		APIError details = new APIError(LocalDateTime.now(), e.getMessage(), "INTERNAL_SERVER_ERROR");
+		return new ResponseEntity<APIError>(details, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@ExceptionHandler(UsernameNotFoundException.class)
-	public ResponseEntity<APIErrorDetails> handleDataNotFound(UsernameNotFoundException e){
-		APIErrorDetails details = new APIErrorDetails(LocalDateTime.now(), e.getMessage(), "NOT_FOUND_ERROR");
-		return new ResponseEntity<APIErrorDetails>(details, HttpStatus.UNAUTHORIZED);
+	public ResponseEntity<APIError> handleDataNotFound(UsernameNotFoundException e){
+		APIError details = new APIError(LocalDateTime.now(), e.getMessage(), "NOT_FOUND_ERROR");
+		return new ResponseEntity<APIError>(details, HttpStatus.UNAUTHORIZED);
 	}
 }
 

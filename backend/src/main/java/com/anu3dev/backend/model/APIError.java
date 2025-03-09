@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class APIErrorDetails {
+public class APIError {
 	private LocalDateTime time;
 	private String msg;
 	private String status;
