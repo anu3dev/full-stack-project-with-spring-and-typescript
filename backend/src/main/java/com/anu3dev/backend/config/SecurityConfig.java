@@ -108,7 +108,7 @@ public class SecurityConfig {
 
 		// adding so few request should public and remaining will be authenticated
 		http.authorizeHttpRequests(request -> request
-				.requestMatchers("/public/v1/*", "/user/v1/register", "/employee/v1/employees", "/email/v1/contact", "/employee/v1/getEmployee/*").permitAll()
+				.requestMatchers("/public/v1/*", "/user/v1/register", "/employee/v1/employees", "/email/v1/contact", "/employee/v1/getEmployee").permitAll()
 				.anyRequest().authenticated());
 
 		// enabling form login for browser request
