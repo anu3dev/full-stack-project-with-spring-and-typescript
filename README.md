@@ -51,7 +51,6 @@
   - Once employee login disables, user will not able to login unless and untill it will be enable again.
   - Once vendor employee account will be approved from respective vendor admin, welcome email will be sent to vendor employee with temp password and success kit.
 
-
 - Vendor's employee login flow:-
   - Once vendor employee account will be approved from respective vendor admin, user will able to login.
   - other actions will be decided later.
