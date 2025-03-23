@@ -37,7 +37,7 @@
   - If user refreshes the page, user has to enter email again and repeat the process.
   - Below values will be stored in user's DB as per user interaction during user registration.
     |User DB|
-    |-|-|-|
+    |-|
     |- id -> default auto increment value|
     |- emailId`*` -> user input|
     |- phoneNo`*` -> user input|
