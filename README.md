@@ -14,6 +14,5 @@
     - Below values will be stored in respective DB's as per user interaction.
       | OTP DB                  | User DB                 | Company DB              |
       |-------------------------|-------------------------|-------------------------|
-      |- ID`*` - default auto   | - ID`*` - default auto  | - ID`*` - default auto  |
-      | increment value         | increment value         | increment value         |
+      |- ID`*` - default auto increment value | - ID`*` - default auto increment value | - ID`*` - default auto increment value |
       | 
