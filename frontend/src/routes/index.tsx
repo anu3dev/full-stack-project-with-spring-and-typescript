@@ -40,7 +40,7 @@ const getRoutingPath = () => {
       ),
     },
     {
-      path: '/register-admin',
+      path: '/register-company',
       element: (
         <Suspense fallback={<div>Loading...</div>}>
           <RegisterAdmin />

@@ -54,7 +54,7 @@ const RegisterUser: React.FC = () => {
         </p>
         <hr></hr>
         <p>
-          &#8658; Are you an admin? <a href="/register-admin">Register here</a>
+          &#8658; Are you an admin? <a href="/register-company">Register your company here</a>
         </p>
       </div>
     </div>

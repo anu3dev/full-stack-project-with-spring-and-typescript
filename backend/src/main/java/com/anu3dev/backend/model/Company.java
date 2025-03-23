@@ -10,9 +10,11 @@ public class Company {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long Id;
-    private String companyEmail;
-    private String companyName;
-    private String companyUniqueId;
+    private String emailId;
+    private String name;
+    private String uniqueId;
     private String approvalStatus;
     private String approvedBy;
+    private String phoneNo;
+    private String registeredBy;
 }

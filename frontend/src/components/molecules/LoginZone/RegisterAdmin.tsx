@@ -9,18 +9,10 @@ const RegisterAdmin: React.FC = () => {
 
   return (
     <div className="login-zone-screen">
-      <h2>Admin registration:</h2>
+      <h2>Company registration:</h2>
       <form>
-        <label htmlFor="role">Company:</label>
-        <select id="role" name="role" required>
-          <option value="">Company name</option>
-          <option value="0001">Parent</option>
-        </select>
-        <p className="helpher-text">
-          <span>&#8727; &nbsp;</span>If you don't see your company, please contact admin.
-        </p>
         <label htmlFor="email">Email:</label>
-        <input type="text" id="email" name="email" required />
+        <input type="text" id="email" name="email" placeholder='Enter your email ID please...' required />
 
         {otpSent && (
           <>

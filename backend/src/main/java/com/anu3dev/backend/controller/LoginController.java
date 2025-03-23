@@ -18,14 +18,27 @@ public class LoginController {
     @Autowired
     private ILoginService loginService;
 
-    @GetMapping("/get-company-list")
-    public List<Company> getCompanyList() {
-        return loginService.getCompanyList();
-    }
-
     @PostMapping("/login-user")
     public String loginUser(@RequestBody User user) {
         return loginService.verifyUserLogin(user);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @GetMapping("/get-company-list")
+    public List<Company> getCompanyList() {
+        return loginService.getCompanyList();
     }
 
     @GetMapping("/users")

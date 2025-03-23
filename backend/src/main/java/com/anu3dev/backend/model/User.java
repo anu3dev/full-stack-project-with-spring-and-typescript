@@ -12,11 +12,11 @@ public class User {
     private int id;
     private String companyId;
     private String emailId;
+    private String phoneNo;
     private String password;
-    private String firstName;
-    private String lastName;
-    private long uniqueId;
+    private String name;
+    private String uniqueId;
     private String approvalStatus;
     private String approvedBy;
-    private String isCompanyAdmin;
+    private String isAdmin;
 }

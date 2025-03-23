@@ -5,7 +5,7 @@ import com.anu3dev.backend.model.EmailContact;
 import com.anu3dev.backend.model.EmailOTP;
 import com.anu3dev.backend.model.User;
 import com.anu3dev.backend.service.IEmailContactService;
-import com.anu3dev.backend.service.IEmailOTPService;
+import com.anu3dev.backend.service.IRegistrationService;
 import com.anu3dev.backend.service.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,12 +23,46 @@ public class PublicController {
     @Autowired
     private IEmailContactService emailService;
     @Autowired
-    private IEmailOTPService otpService;
+    private IRegistrationService registrationService;
+
+    @PostMapping("/send-otp")
+    public ResponseEntity<?> sendEmailOTP(@RequestBody EmailOTP email) {
+        try {
+            return new ResponseEntity<String>(registrationService.sendOTPEmail(email), HttpStatus.OK);
+        } catch(Exception e) {
+            return new ResponseEntity<String>("request can't be completed.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/verify-otp")
+    public ResponseEntity<?> verifyEmailOtp(@RequestBody EmailOTP email) {
+        try {
+            return new ResponseEntity<String>(registrationService.verifyOTPEmail(email), HttpStatus.OK);
+        } catch(Exception e) {
+            return new ResponseEntity<String>("request can't be completed.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @PostMapping("/register-company")
-    public String registerCompany(@RequestBody Company company) throws Exception  {
-        return loginService.registerCompany(company);
+    public ResponseEntity<?> registerCompany(@RequestBody Company company)  {
+        try {
+            return new ResponseEntity<String>(registrationService.registerCompany(company), HttpStatus.OK);
+        } catch(Exception e) {
+            return new ResponseEntity<String>("request can't be completed.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
     @GetMapping("/get-approved-company-list")
     public List<Company> getApprovedCompanyList() {
@@ -44,15 +78,6 @@ public class PublicController {
     public ResponseEntity<?> sendWelcomeEmail(@RequestBody EmailContact email) {
         try {
             return new ResponseEntity<String>(emailService.sendContactEmail(email), HttpStatus.OK);
-        } catch(Exception e) {
-            return new ResponseEntity<String>("request can't be completed.", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @PostMapping("/otp")
-    public ResponseEntity<?> sendWelcomeEmail(@RequestBody EmailOTP email) {
-        try {
-            return new ResponseEntity<String>(otpService.sendOTPEmail(email), HttpStatus.OK);
         } catch(Exception e) {
             return new ResponseEntity<String>("request can't be completed.", HttpStatus.INTERNAL_SERVER_ERROR);
         }

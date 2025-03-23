@@ -30,21 +30,46 @@ public class LoginService implements ILoginService {
     @Autowired
     AuthenticationManager authManager;
 
+    public String verifyUserLogin(User user) {
+        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmailId(), user.getPassword()));
+        if (authentication.isAuthenticated()) {
+            return jwtService.generateToken(user.getEmailId());
+        } else {
+            return "failure";
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Override
     public String registerCompany(Company company) throws Exception {
-        if(loginDao.existsByCompanyEmail(company.getCompanyEmail())) {
-            return "Company with email " + company.getCompanyEmail() + " already exists.";
+        if(loginDao.existsByEmailId(company.getEmailId())) {
+            return "Company with email " + company.getEmailId() + " already exists.";
         }
-        company.setCompanyUniqueId(generateUniqueCompanyId());
+        company.setUniqueId(generateUniqueCompanyId());
         loginDao.save(company);
-        return "Company registered successfully with unique id: " + company.getCompanyUniqueId();
+        return "Company registered successfully with unique id: " + company.getUniqueId();
     }
 
     private String generateUniqueCompanyId() {
         String uniqueId;
         do {
             uniqueId = generateRandom6DigitNumber();
-        } while (loginDao.existsByCompanyUniqueId(uniqueId));
+        } while (loginDao.existsByUniqueId(uniqueId));
         return uniqueId;
     }
 
@@ -56,7 +81,7 @@ public class LoginService implements ILoginService {
 
     public List<Company> getCompanyList() {
         List<Company> companyList = loginDao.findAll();
-        return companyList.stream().filter(company -> !company.getCompanyUniqueId().equals("630448"))
+        return companyList.stream().filter(company -> !company.getUniqueId().equals("630448"))
                 .collect(Collectors.toList());
     }
 
@@ -70,34 +95,25 @@ public class LoginService implements ILoginService {
         if(userDao.existsByEmailId(user.getEmailId())) {
             return "User with email " + user.getEmailId() + " already exists.";
         }
-        user.setUniqueId(generateUniqueId());
+        //user.setUniqueId(generateUniqueId());
         final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
         user.setPassword(encoder.encode(user.getPassword()));
         userDao.save(user);
         return "User registered successfully.";
     }
 
-    private long generateUniqueId() {
-        long uniqueId;
-        do {
-            uniqueId = Long.parseLong(generateRandom10DigitNumber());
-        } while (userDao.existsByUniqueId(uniqueId));
-        return uniqueId;
-    }
+//    private long generateUniqueId() {
+//        long uniqueId;
+//        do {
+//            uniqueId = Long.parseLong(generateRandom10DigitNumber());
+//        } while (userDao.existsByUniqueId(uniqueId));
+//        return uniqueId;
+//    }
 
     private String generateRandom10DigitNumber() {
         final SecureRandom random = new SecureRandom();
         long number = random.nextLong(9000000000L) + 1000000000L; // Generates a number between 100000 and 999999
         return String.valueOf(number);
-    }
-
-    public String verifyUserLogin(User user) {
-        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmailId(), user.getPassword()));
-        if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(user.getEmailId());
-        } else {
-            return "failure";
-        }
     }
 
     public List<User> getAllUsers() {
@@ -117,8 +133,7 @@ public class LoginService implements ILoginService {
     public ResponseEntity<User> updateUserData(int id, User user) {
         User userDetail = userDao.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: "+ id));
-        userDetail.setFirstName(user.getFirstName());
-        userDetail.setLastName(user.getLastName());
+        userDetail.setName(user.getName());
         userDetail.setEmailId(user.getEmailId());
 
         User updatedUser = userDao.save(userDetail);

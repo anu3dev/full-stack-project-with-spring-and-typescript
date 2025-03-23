@@ -10,8 +10,6 @@ public class EmailOTP {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long Id;
-	@Column(name="email_id")
 	private String emailId;
-	@Column(columnDefinition="TEXT")
-	private String message;
+	private String otpValue;
 }
