@@ -1,6 +1,6 @@
 # full-stack-project-with-spring-and-typescript
 
-### application flow:-
+### Application flow:-
 
 - Company registration:-
   - Enter email:-
@@ -11,3 +11,7 @@
     - Once user enters OTP, validate it with DB, if it doesn't match with DB, return error message.
     - If otp validation success, delete OTP value from DB, and enable rest input field in registration form.
     - If user refreshes the page, user has to enter email again and repeat the process.
+    - Below values will be stored in respective DB's as per user interaction.
+      | OTP DB                  | User DB                 | Company DB              |
+      |-------------------------|-------------------------|-------------------------|
+      |
