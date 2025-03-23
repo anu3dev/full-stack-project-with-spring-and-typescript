@@ -17,3 +17,5 @@
       |- ID -> default auto increment value|- ID -> default auto increment value|- ID -> default auto increment value|
       |- email`*` -> user input|- email`*` -> user input|- email`*` -> user input|
       |- OTP -> 6 digit numeric value, which will be used to compare with user OTP input|- phone`*` -> user input|- phone`*` -> user input|
+      ||||
+        - `*` -> values will be collected from user.
