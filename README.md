@@ -4,7 +4,7 @@
 
 - Vendor registration flow:-
   - Enter email:-
-      ![alt text]([http://url/to/img.png](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/01.png))   
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/01.png)
   - Check if email is already registered with any other company, if yes, return error message.
   - Check if email is alreday registered with any other user in any company, if yes, return error message.
   - If both above is no, send OTP to email.
