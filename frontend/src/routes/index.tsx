@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import Login from '../components/molecules/LoginZone/Login'
 import ResetPassword from '../components/molecules/LoginZone/ResetPassword'
 import RegisterUser from '../components/molecules/LoginZone/RegisterUser'
-import RegisterAdmin from '../components/molecules/LoginZone/RegisterAdmin'
+import RegisterCompany from '../components/molecules/LoginZone/RegisterCompany'
 import Home from '../components/molecules/Home'
 
 const getRoutingPath = () => {
@@ -43,7 +43,7 @@ const getRoutingPath = () => {
       path: '/register-company',
       element: (
         <Suspense fallback={<div>Loading...</div>}>
-          <RegisterAdmin />
+          <RegisterCompany />
         </Suspense>
       ),
     },

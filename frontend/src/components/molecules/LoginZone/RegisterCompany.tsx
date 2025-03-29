@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { handleRegistrationBtnText, handleRegistrationBtnClick } from './Utils'
 
-const RegisterAdmin: React.FC = () => {
+const RegisterCompany: React.FC = () => {
   const [otpSent, setOtpSent] = useState(false)
+  const [otpVerified, setOtpVerified] = useState(false)
 
   const handleBtnClick = () => {
-    setOtpSent(!otpSent)
+    handleRegistrationBtnClick(setOtpSent, setOtpVerified)
   }
 
   return (
@@ -36,7 +38,7 @@ const RegisterAdmin: React.FC = () => {
           </>
         )}
         <button type="submit" onClick={handleBtnClick}>
-          Register
+        {handleRegistrationBtnText(otpSent, otpVerified)}
         </button>
       </form>
       <div className="additional-links">
@@ -52,4 +54,4 @@ const RegisterAdmin: React.FC = () => {
   )
 }
 
-export default RegisterAdmin
+export default RegisterCompany
