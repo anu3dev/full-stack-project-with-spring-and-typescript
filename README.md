@@ -4,6 +4,7 @@
 
 - Company registration flow:-
   - Enter email:-
+
       ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/01.png)
     
   - Check if email is already registered with any other company, if yes, return error message.
