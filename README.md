@@ -2,7 +2,7 @@
 
 ### Application flow:-
 
-- Vendor registration flow:-
+- Company registration flow:-
   - Enter email:-
       
       ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/01.png)
