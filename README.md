@@ -61,16 +61,51 @@
    
 - Employee registration flow:-
   - Enter email:-
+
+       ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-01.png)
+    
   - Check if user enters the email, if no then display error message
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-02.png)
+    
   - Check if email is already registered with any other company, if yes, return error message.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-03.png)
+    
   - Check if email is alreday registered with any other user in any company, if yes, return error message.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-04.png)
+        
   - If both above is no, send OTP to email, If any OTP value exist in DB with current email then override it, else store it.
+
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-05.png)
+    
   - Check if user enters OTP, if no then display error message
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-06.png)
+    
   - If OTP entered by user doesn't match with DB value, display error message
+ 
+    ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-07.png)
+    ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-08.png)  
+      
   - Once user enters valid OTP, display success message. If otp validation success, delete OTP value from DB, and enable rest input field in registration form. If user refreshes the page, user has to enter email again and repeat the process.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-09.png)
+    
   - Validate if user doesn't enter required field.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-10.png)
+    
   - Approved company list name will also be displayed in dropdown so user can choose and enroll themself.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-11.png)
+    
   - Below values will be stored in user's DB as per user interaction during user registration.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-12.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/user-reg-13.png)
+    
     |User DB|
     |-|
     |- id -> default auto increment value|
