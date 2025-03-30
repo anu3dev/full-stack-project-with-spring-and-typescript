@@ -6,14 +6,35 @@
   - Enter email:-
 
       ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/01.png)
+
+  - Check if user enters the email, if no then display error message
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/02.png)
     
   - Check if email is already registered with any other company, if yes, return error message.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/03.png)
+    
   - Check if email is alreday registered with any other user in any company, if yes, return error message.
-  - If both above is no, send OTP to email.
-  - If any OTP value exist in DB with current email then override it, else store it.
-  - Once user enters OTP, validate it with DB, if it doesn't match with DB, return error message.
-  - If otp validation success, delete OTP value from DB, and enable rest input field in registration form.
-  - If user refreshes the page, user has to enter email again and repeat the process.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/04.png)
+    
+  - If both above is no, send OTP to email, If any OTP value exist in DB with current email then override it, else store it.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/05.png)
+
+  - Check if user enters OTP, if no then display error message
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/06.png)
+
+  - If OTP entered by user doesn't match with DB value, display error message
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/07.png)
+    
+  - Once user enters valid OTP, display success message. If otp validation success, delete OTP value from DB, and enable rest input field in registration form. If user refreshes the page, user has to enter email again and repeat the process.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/08.png)
+    
   - Below values will be stored in respective DB's as per user interaction during company registration.
     |OTP DB|Company DB|User DB|
     |-|-|-|
