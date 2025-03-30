@@ -21,14 +21,16 @@ const RegisterCompany: React.FC = () => {
   };
 
   const handleBtnClick = () => {
-    handleRegistrationBtnClick(setOtpVerified, setHelperTextMessage, formData, helperTextMessage)
+    handleRegistrationBtnClick(setOtpVerified, setHelperTextMessage, formData, helperTextMessage, 'company', setFormData)
   }
-
-  console.log('helperTextMessage', helperTextMessage)
 
   return (
     <div className="login-zone-screen">
-      <h2>Company registration:</h2>
+      {helperTextMessage.includes('registered successfully with unique') ? (
+        <h2>{helperTextMessage}</h2>
+      ) : (
+        <>
+          <h2>Company registration:</h2>
       <form>
         <label htmlFor="email">Your email:</label>
         <input type="text" name="emailId" value={formData.emailId} placeholder="Enter your email ID please..." onChange={handleFormValueChange} />
@@ -68,6 +70,8 @@ const RegisterCompany: React.FC = () => {
           {handleRegistrationBtnText(helperTextMessage, otpVerified)}
         </button>
       </form>
+        </>
+      )}
       <div className="additional-links">
         <p>
           &#8658; Already registered? <a href="/login">Login here</a>
