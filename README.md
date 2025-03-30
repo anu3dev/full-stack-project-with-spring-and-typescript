@@ -43,7 +43,7 @@
   - Below values will be stored in respective DB's as per user interaction during company registration.
  
       ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-11.png)
-    ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-12.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-12.png)
     
     |OTP DB|Company DB|User DB|
     |-|-|-|
@@ -61,13 +61,15 @@
    
 - Employee registration flow:-
   - Enter email:-
+  - Check if user enters the email, if no then display error message
   - Check if email is already registered with any other company, if yes, return error message.
   - Check if email is alreday registered with any other user in any company, if yes, return error message.
-  - If both above is no, send OTP to email.
-  - If any OTP value exist in DB with current email then override it, else store it.
-  - Once user enters OTP, validate it with DB, if it doesn't match with DB, return error message.
-  - If otp validation success, delete OTP value from DB, and enable rest input field in registration form.
-  - If user refreshes the page, user has to enter email again and repeat the process.
+  - If both above is no, send OTP to email, If any OTP value exist in DB with current email then override it, else store it.
+  - Check if user enters OTP, if no then display error message
+  - If OTP entered by user doesn't match with DB value, display error message
+  - Once user enters valid OTP, display success message. If otp validation success, delete OTP value from DB, and enable rest input field in registration form. If user refreshes the page, user has to enter email again and repeat the process.
+  - Validate if user doesn't enter required field.
+  - Approved company list name will also be displayed in dropdown so user can choose and enroll themself.
   - Below values will be stored in user's DB as per user interaction during user registration.
     |User DB|
     |-|
