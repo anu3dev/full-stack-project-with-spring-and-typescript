@@ -5,45 +5,45 @@
 - Company registration flow:-
   - Enter email:-
 
-      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/01.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-01.png)
 
   - Check if user enters the email, if no then display error message
  
-      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/02.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-02.png)
     
   - Check if email is already registered with any other company, if yes, return error message.
  
-      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/03.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-03.png)
     
   - Check if email is alreday registered with any other user in any company, if yes, return error message.
  
-      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/04.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-04.png)
     
   - If both above is no, send OTP to email, If any OTP value exist in DB with current email then override it, else store it.
  
-      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/05.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-05.png)
 
   - Check if user enters OTP, if no then display error message
  
-      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/06.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-06.png)
 
   - If OTP entered by user doesn't match with DB value, display error message
  
-      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/07.png)
-      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/08.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-07.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-08.png)
     
   - Once user enters valid OTP, display success message. If otp validation success, delete OTP value from DB, and enable rest input field in registration form. If user refreshes the page, user has to enter email again and repeat the process.
 
-      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/09.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-09.png)
 
   - Validate if user doesn't enter required field.
  
-       ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/10.png) 
+       ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-10.png) 
     
   - Below values will be stored in respective DB's as per user interaction during company registration.
  
-      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/11.png)
-    ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/12.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-11.png)
+    ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/comp-reg-12.png)
     
     |OTP DB|Company DB|User DB|
     |-|-|-|
