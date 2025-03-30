@@ -30,12 +30,13 @@ public class LoginService implements ILoginService {
     @Autowired
     AuthenticationManager authManager;
 
+    @Override
     public String verifyUserLogin(User user) {
         Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmailId(), user.getPassword()));
         if (authentication.isAuthenticated()) {
             return jwtService.generateToken(user.getEmailId());
         } else {
-            return "failure";
+            return "Either username or password is incorrect.";
         }
     }
 

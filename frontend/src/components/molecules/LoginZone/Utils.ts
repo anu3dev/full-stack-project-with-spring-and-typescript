@@ -1,4 +1,4 @@
-import { PUBLIC_API_URL } from "../../../constants"
+import { PRIVATE_API_URL, PUBLIC_API_URL } from "../../../constants"
 
 /**
  * 
@@ -113,6 +113,51 @@ export const handleRegistrationBtnClick = async (
     })
     .catch(() => {
       setHelperTextMessage('An error occurred while registering the company.');
+    });
+  }
+}
+
+export const handleLoginBtnClick = async (
+  setHelperTextMessage: (value: string) => void,
+  formData: { [key: string]: string }
+): Promise<void> => {
+  if (formData?.emailId === '') {
+    setHelperTextMessage('Please enter your email ID.');
+    return;
+  } else if (formData?.password === '') {
+    setHelperTextMessage('Please enter your password.');
+    return;
+  } else {
+    const url = `${PRIVATE_API_URL}login-user`;
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+      emailId: formData?.emailId,
+      password: formData?.password,
+      }),
+      headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      },
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        return response.text();
+      } else {
+        setHelperTextMessage('Invalid email ID or password.');
+        throw new Error('Invalid email ID or password.');
+      }
+    })
+    .then((resp) => {
+      if (resp) {
+        window.sessionStorage.setItem('AccessToken', resp);
+        window.location.assign('/dashboard'); 
+      } else {
+        setHelperTextMessage('Unexpected response format.');
+      }
+    })
+    .catch((e) => {
+      setHelperTextMessage(e.message);
     });
   }
 }

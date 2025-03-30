@@ -4,6 +4,7 @@ import ResetPassword from '../components/molecules/LoginZone/ResetPassword'
 import RegisterUser from '../components/molecules/LoginZone/RegisterUser'
 import RegisterCompany from '../components/molecules/LoginZone/RegisterCompany'
 import Home from '../components/molecules/Home'
+import Dashboard from '../components/molecules/Dashboard'
 
 const getRoutingPath = () => {
   const routes = [
@@ -44,6 +45,14 @@ const getRoutingPath = () => {
       element: (
         <Suspense fallback={<div>Loading...</div>}>
           <RegisterCompany />
+        </Suspense>
+      ),
+    },
+    {
+      path: '/dashboard',
+      element: (
+        <Suspense fallback={<div>Loading...</div>}>
+          <Dashboard />
         </Suspense>
       ),
     },

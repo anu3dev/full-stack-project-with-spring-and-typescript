@@ -1,9 +1,10 @@
-const Dashboard: React.FC<{ firstName: string }> = (props) => {
-  const { firstName } = props
+const Dashboard: React.FC = () => {
+  //const { firstName } = props
 
   return (
     <div>
-      <h1>Hi {firstName}</h1>
+      {/* <h1>Hi {firstName}</h1> */}
+      <h1>Dashboard</h1>
     </div>
   )
 }

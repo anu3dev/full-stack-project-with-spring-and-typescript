@@ -1,38 +1,43 @@
-import React, { useState, useEffect } from 'react'
-import {getCompanyListName} from './Utils'
+import React, { useState } from 'react'
+import { handleLoginBtnClick} from './Utils'
 
 const Login: React.FC = () => {
-  const [getCompanyName, setCompanyName] = useState<string[]>([])
+  const [helperTextMessage, setHelperTextMessage] = useState('')
+  const [formData, setFormData] = useState({
+    emailId: '',
+    password: '',
+  })
 
-  useEffect(() => {
-    getCompanyListName(setCompanyName)
-  },[])
+  const handleFormValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-  const handleBtnClick = () => {}
+  const handleBtnClick = () => {
+    handleLoginBtnClick(setHelperTextMessage, formData)
+  }
 
   return (
     <div className="login-zone-screen">
       <h2>Login here:</h2>
       <form>
-        <label htmlFor="role">Company:</label>
-        <select id="role" name="role" required>
-          <option value="">Company name</option>
-          {getCompanyName.map((company: string) => (
-            <option key={company} value={company}>
-              {company}
-            </option>
-          ))}
-        </select>
-        <p className="helpher-text">
-          <span>&#8727; &nbsp;</span>If you don't see your company, please contact admin.
-        </p>
-        <label htmlFor="email">Email:</label>
-        <input type="text" id="email" name="email" required />
+        <label htmlFor="email">Your email:</label>
+        <input type="text" name="emailId" value={formData.emailId} placeholder="Enter your email ID please..." onChange={handleFormValueChange} />
 
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+        <label htmlFor="password">Your password:</label>
+        <input type="password" name="password" value={formData.password} placeholder="Enter your password please..." onChange={handleFormValueChange} />
 
-        <button type="submit" onClick={handleBtnClick}>
+        {helperTextMessage && (
+          <p className="helpher-text">
+            <span>&#8727; &nbsp;</span>
+            {helperTextMessage}
+          </p>
+        )}
+
+        <button type="button" onClick={handleBtnClick}>
           Login
         </button>
       </form>

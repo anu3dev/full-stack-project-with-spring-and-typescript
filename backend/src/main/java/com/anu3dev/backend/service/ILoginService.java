@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 public interface ILoginService {
+    String verifyUserLogin(User user);
     String registerCompany(Company company) throws Exception;
     List<Company> getCompanyList();
     List<Company> getApprovedCompanyList();
     String registerUser(User user) throws Exception;
-    String verifyUserLogin(User user);
     List<User> getAllUsers();
     User saveUserData(User user);
     ResponseEntity<User> getUserData(int id);
