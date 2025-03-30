@@ -59,7 +59,7 @@
     |||uniqueId -> 8 digit numeric unique employee ID start with 10000000|
     - `*` -> values will be collected from user.
    
-- Parent's employee registration flow:-
+- Employee registration flow:-
   - Enter email:-
   - Check if email is already registered with any other company, if yes, return error message.
   - Check if email is alreday registered with any other user in any company, if yes, return error message.
@@ -82,30 +82,6 @@
     |isAdmin -> stored as false|
     |uniqueId -> 8 digit numeric unique employee ID start with 10000000|
     - `*` -> values will be collected from user.
-   
-- Vendor's employee registration flow:-
-  - Enter email:-
-  - Check if email is already registered with any other company, if yes, return error message.
-  - Check if email is alreday registered with any other user in any company, if yes, return error message.
-  - If both above is no, send OTP to email.
-  - If any OTP value exist in DB with current email then override it, else store it.
-  - Once user enters OTP, validate it with DB, if it doesn't match with DB, return error message.
-  - If otp validation success, delete OTP value from DB, and enable rest input field in registration form.
-  - If user refreshes the page, user has to enter email again and repeat the process.
-  - Below values will be stored in user's DB as per user interaction during user registration.
-    |User DB|
-    |-|
-    |- id -> default auto increment value|
-    |- emailId`*` -> user input|
-    |- phoneNo`*` -> user input|
-    |companyId -> 6 digit company ID will be displayed to user in dropdown during registration and will be mapped against user|
-    |name`*` -> user has to enter full name|
-    |approvalStatus -> will be stored as true once respective vendor will approve it's employee|
-    |approvedBy -> will be stored approval person unique employee ID|
-    |password -> alpha numeric 8 digit temp password will be send to email with successful registration kit once approval will be done|
-    |isAdmin -> stored as false|
-    |uniqueId -> 8 digit numeric unique employee ID start with 10000000|
-    - `*` -> values will be collected from user. 
 
 - General login flow:-
   - Login will be done using user and password, validate if user entered the crediantial or not, if not then display error message.
