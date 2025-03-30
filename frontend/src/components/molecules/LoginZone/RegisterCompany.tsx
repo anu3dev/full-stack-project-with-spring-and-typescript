@@ -76,6 +76,9 @@ const RegisterCompany: React.FC = () => {
         <p>
           &#8658; Already registered? <a href="/login">Login here</a>
         </p>
+        <p>
+          &#8658; Not able to login? <a href="/reset-password">Password reset</a>
+        </p>
         <hr></hr>
         <p>
           &#8658; Are you an user? <a href="/register-user">Register here</a>

@@ -50,11 +50,14 @@ const RegisterUser: React.FC = () => {
       </form>
       <div className="additional-links">
         <p>
-          &#8658; Got your password? <a href="/login">Login here</a>
+          &#8658; Already registered? <a href="/login">Login here</a>
+        </p>
+        <p>
+          &#8658; Not able to login? <a href="/reset-password">Password reset</a>
         </p>
         <hr></hr>
         <p>
-          &#8658; Are you an admin? <a href="/register-company">Register your company here</a>
+          &#8658; Are you an admin? <a href="/register-company">Register here</a>
         </p>
       </div>
     </div>

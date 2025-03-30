@@ -25,14 +25,14 @@ const Login: React.FC = () => {
       </form>
       <div className="additional-links">
         <p>
-          &#8658; Not able to login? <a href="/reset-password">Reset here</a>
+          &#8658; Not able to login? <a href="/reset-password">Password reset</a>
         </p>
         <hr></hr>
         <p>
-          &#8658; Don't have an account? <a href="/register-user">Register here</a>
+          &#8658; Are you an user? <a href="/register-user">Register here</a>
         </p>
         <p>
-          &#8658; Are you an admin? <a href="/register-company">Register your company here</a>
+          &#8658; Are you an admin? <a href="/register-company">Register here</a>
         </p>
       </div>
     </div>
