@@ -90,7 +90,7 @@ export const handleRegistrationBtnClick = async (
       setHelperTextMessage('An error occurred while verifying OTP.');
     });
     return;
-  } else if ((helperTextMessage === 'OTP verified successfully.' || helperTextMessage === 'Please enter below missing details.') && (formData.name === '' || formData.phoneNo === '' || formData.registeredBy === '')) {
+  } else if ((helperTextMessage === 'OTP verified successfully.' || helperTextMessage === 'Please enter below missing details.') && (formData.name === '' || formData.phoneNo === '' || (formData.registeredBy === '' || formData.companyId === ''))) {
     setHelperTextMessage('Please enter below missing details.');
     return;
   } else {

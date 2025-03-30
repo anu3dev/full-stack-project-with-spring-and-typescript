@@ -42,7 +42,7 @@ const RegisterUser: React.FC = () => {
         <h2>{helperTextMessage}</h2>
       ) : (
         <>
-          <h2>Company registration:</h2>
+          <h2>User registration:</h2>
       <form>
         <label htmlFor="email">Your email:</label>
         <input type="text" name="emailId" value={formData.emailId} placeholder="Enter your email ID please..." onChange={handleFormValueChange} />
@@ -73,8 +73,8 @@ const RegisterUser: React.FC = () => {
               ))}
             </select>
 
-            <label htmlFor="company">Company name:</label>
-            <input type="text" name="name" value={formData.name} placeholder='Enter your company name please...' onChange={handleFormValueChange} />
+            <label htmlFor="company">Your name:</label>
+            <input type="text" name="name" value={formData.name} placeholder='Enter your name please...' onChange={handleFormValueChange} />
 
             <label htmlFor="mobile">Enter phone number:</label>
             <input type="text" name="phoneNo" value={formData.phoneNo} placeholder='Enter your phone number please...' onChange={handleFormValueChange} />
