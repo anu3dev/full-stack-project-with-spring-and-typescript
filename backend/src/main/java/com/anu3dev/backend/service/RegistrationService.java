@@ -68,7 +68,7 @@ public class RegistrationService implements IRegistrationService {
 				daoEmailOTP.delete(existingEmailOTP);
 				return "OTP verified successfully.";
 			} else {
-				return "Invalid OTP.";
+				return "Entered OTP is invalid.";
 			}
 		} else {
 			return "Email ID not found.";
@@ -122,6 +122,42 @@ public class RegistrationService implements IRegistrationService {
 			sender.send(mimeMessage);
 
 			return "Company registered successfully with unique ID: " + company.getUniqueId();
+		}
+	}
+
+	@Override
+	public String registerUser(User user) throws Exception {
+		if(daoCompany.existsByEmailId(user.getEmailId())) {
+			return user.getEmailId() + " is already registered with company ID: " + daoCompany.findByEmailId(user.getEmailId()).getUniqueId();
+		} else if (daoUser.existsByEmailId(user.getEmailId())) {
+			return user.getEmailId() + " is already registered with user ID: " + daoUser.findByEmailId(user.getEmailId()).getUniqueId();
+		} else {
+			// Generate a unique ID for the user also check if it already exists
+			String uniqueUserId;
+			do {
+				uniqueUserId = generateRandomNumberInLimit(EightDigitStart, EightDigitEnd);
+			} while (daoUser.existsByUniqueId(uniqueUserId));
+
+			String tempPassword = generateRandomNumber(PasswordLength, AlphaNumericForPassword);
+			final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+
+			user.setIsAdmin("");
+			user.setApprovedBy("");
+			user.setApprovalStatus("");
+			user.setUniqueId(uniqueUserId);
+			user.setPassword(encoder.encode(tempPassword));
+			daoUser.save(user);
+
+			MimeMessage mimeMessage = sender.createMimeMessage();
+
+			MimeMessageHelper emailMessage = new MimeMessageHelper(mimeMessage, true);
+			emailMessage.setFrom(fromEmailid);
+			emailMessage.setTo(user.getEmailId());
+			emailMessage.setSubject("Temp password for user");
+			emailMessage.setText("Your temp password is: " + tempPassword);
+			sender.send(mimeMessage);
+
+			return "User registered successfully with unique ID: " + user.getUniqueId();
 		}
 	}
 }

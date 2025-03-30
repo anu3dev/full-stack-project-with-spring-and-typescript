@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/public/v1/")
 public class PublicController {
@@ -52,7 +52,10 @@ public class PublicController {
         }
     }
 
-
+    @PostMapping("/register-user")
+    public String registerUser(@RequestBody User user) throws Exception {
+        return registrationService.registerUser(user);
+    }
 
 
 
@@ -67,11 +70,6 @@ public class PublicController {
     @GetMapping("/get-approved-company-list")
     public List<Company> getApprovedCompanyList() {
         return loginService.getApprovedCompanyList();
-    }
-
-    @PostMapping("/register-user")
-    public String registerUser(@RequestBody User user) throws Exception {
-        return loginService.registerUser(user);
     }
 
     @PostMapping("/contact")
