@@ -60,7 +60,7 @@
     - `*` -> values will be collected from user.
 
 - General login flow:-
-  - login will done using user and password.
+  - login will be done using user and password, all the approved comnany will be displayed in login page dropdown.
   - If credentials matches, AccessToken will be stored to session storage, this token will be used for authorization and authenication.
   - If token is not present or unauthorized/expired, user will be redirected to login page.
 
