@@ -153,7 +153,7 @@ export const handleLoginBtnClick = async (
         window.sessionStorage.setItem('AccessToken', resp);
         window.location.assign('/dashboard'); 
       } else {
-        setHelperTextMessage('Unexpected response format.');
+        setHelperTextMessage('Invalid email ID or password.');
       }
     })
     .catch((e) => {

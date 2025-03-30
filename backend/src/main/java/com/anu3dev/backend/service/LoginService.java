@@ -36,7 +36,7 @@ public class LoginService implements ILoginService {
         if (authentication.isAuthenticated()) {
             return jwtService.generateToken(user.getEmailId());
         } else {
-            return "Either username or password is incorrect.";
+            return "Invalid email ID or password.";
         }
     }
 
