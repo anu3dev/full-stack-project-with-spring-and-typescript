@@ -61,6 +61,10 @@
 
 - General login flow:-
   - login will be done using user and password, all the approved comnany will be displayed in login page dropdown.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/login-01.png)
+    ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/login-02.png)
+    
   - If credentials matches, AccessToken will be stored to session storage, this token will be used for authorization and authenication.
   - If token is not present or unauthorized/expired, user will be redirected to login page.
 
