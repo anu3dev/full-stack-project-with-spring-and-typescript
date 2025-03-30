@@ -1,3 +1,5 @@
+@use 'styles/index.scss';
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
@@ -9,7 +11,7 @@ body {
   padding: 0;
 }
 
-@import 'styles/index.scss';
+// @import 'styles/index.scss';
 
 // handling dark and light mode styles
 // :root {
