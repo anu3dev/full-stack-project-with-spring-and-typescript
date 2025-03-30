@@ -63,16 +63,17 @@
   - Login will be done using user and password, validate if user entered the crediantial or not, if not then display error message.
  
       ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/login-01.png)
-    ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/login-02.png)
-    ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/login-03.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/login-02.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/login-03.png)
 
   - Validate if user entered the crediantial or not, if not then display error message, if yes, set AccessToken to session storage and redirect to dashboard.
  
       ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/login-04.png)
-    ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/login-05.png)
-    ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/login-06.png)
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/login-05.png)
     
   - If credentials matches, AccessToken will be stored to session storage, this token will be used for authorization and authenication. If token is not present or unauthorized/expired, user will be redirected to login page.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/login-06.png)
 
 - Parent's admin login flow:-
   - Can see full list of employees from parent company, will have option to view, update, disable and delete.
