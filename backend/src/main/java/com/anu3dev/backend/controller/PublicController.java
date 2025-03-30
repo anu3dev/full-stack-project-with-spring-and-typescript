@@ -57,20 +57,32 @@ public class PublicController {
         return registrationService.registerUser(user);
     }
 
-
-
-
-
-
-
-
-
-
-
-    @GetMapping("/get-approved-company-list")
-    public List<Company> getApprovedCompanyList() {
-        return loginService.getApprovedCompanyList();
+    @GetMapping("/company-list")
+    public List<String> approvedCompanyList() {
+        return registrationService.approvedCompanyNameList();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @PostMapping("/contact")
     public ResponseEntity<?> sendWelcomeEmail(@RequestBody EmailContact email) {

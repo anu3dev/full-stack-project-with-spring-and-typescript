@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { handleRegistrationBtnText, handleRegistrationBtnClick } from './Utils'
 
 const RegisterCompany: React.FC = () => {

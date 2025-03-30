@@ -14,6 +14,9 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static com.anu3dev.backend.service.CommonUtils.*;
 import static com.anu3dev.backend.service.Constants.*;
 
@@ -159,5 +162,14 @@ public class RegistrationService implements IRegistrationService {
 
 			return "User registered successfully with unique ID: " + user.getUniqueId();
 		}
+	}
+
+	@Override
+	public List<String> approvedCompanyNameList() {
+		List<Company> companyList = daoCompany.findAll();
+		return companyList.stream()
+				.filter(company -> "true".equals(company.getApprovalStatus()))
+				.map(Company::getUniqueId)
+				.collect(Collectors.toList());
 	}
 }

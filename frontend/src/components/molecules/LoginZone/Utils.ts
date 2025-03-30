@@ -116,3 +116,21 @@ export const handleRegistrationBtnClick = async (
     });
   }
 }
+
+export const getCompanyListName = (setCompanyName: (companyNames: string[]) => void): Promise<void> => {
+  const url = `${PUBLIC_API_URL}company-list`;
+  return fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+  })
+  .then((response) => response.json())
+  .then ((resp) => {
+    setCompanyName(resp);
+  })
+  .catch(() => {
+    setCompanyName([]);
+  });
+}

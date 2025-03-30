@@ -1,4 +1,13 @@
+import React, { useState, useEffect } from 'react'
+import {getCompanyListName} from './Utils'
+
 const Login: React.FC = () => {
+  const [getCompanyName, setCompanyName] = useState<string[]>([])
+
+  useEffect(() => {
+    getCompanyListName(setCompanyName)
+  },[])
+
   const handleBtnClick = () => {}
 
   return (
@@ -8,7 +17,11 @@ const Login: React.FC = () => {
         <label htmlFor="role">Company:</label>
         <select id="role" name="role" required>
           <option value="">Company name</option>
-          <option value="0001">Parent</option>
+          {getCompanyName.map((company: string) => (
+            <option key={company} value={company}>
+              {company}
+            </option>
+          ))}
         </select>
         <p className="helpher-text">
           <span>&#8727; &nbsp;</span>If you don't see your company, please contact admin.
