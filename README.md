@@ -30,12 +30,21 @@
   - If OTP entered by user doesn't match with DB value, display error message
  
       ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/07.png)
-    
-  - Once user enters valid OTP, display success message. If otp validation success, delete OTP value from DB, and enable rest input field in registration form. If user refreshes the page, user has to enter email again and repeat the process.
- 
       ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/08.png)
     
+  - Once user enters valid OTP, display success message. If otp validation success, delete OTP value from DB, and enable rest input field in registration form. If user refreshes the page, user has to enter email again and repeat the process.
+
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/09.png)
+
+  - Validate if user doesn't enter required field.
+ 
+       ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/10.png) 
+    
   - Below values will be stored in respective DB's as per user interaction during company registration.
+ 
+      ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/11.png)
+    ![alt text](https://github.com/anu3dev/full-stack-project-with-spring-and-typescript/blob/main/images/12.png)
+    
     |OTP DB|Company DB|User DB|
     |-|-|-|
     |- id -> default auto increment value|- id -> default auto increment value|- id -> default auto increment value|
