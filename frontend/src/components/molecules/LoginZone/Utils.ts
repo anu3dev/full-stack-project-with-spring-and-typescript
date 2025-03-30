@@ -21,7 +21,14 @@ export const handleRegistrationBtnText = (helperTextMessage: string, otpVerified
 export const handleRegistrationBtnClick = async (
     setOtpVerified: (value: boolean) => void,
     setHelperTextMessage: (value: string) => void,
-    formData: { [key: string]: string },
+    formData: {
+      emailId: string;
+      otpValue: string;
+      name: string;
+      phoneNo: string;
+      registeredBy?: string;
+      companyId?: string;
+    },
     helperTextMessage: string,
     registrationType: string,
     setFormData: React.Dispatch<React.SetStateAction<{
@@ -29,7 +36,8 @@ export const handleRegistrationBtnClick = async (
       otpValue: string;
       name: string;
       phoneNo: string;
-      registeredBy: string;
+      registeredBy?: string;
+      companyId?: string;
     }>>
   ): Promise<void> => {
     if (formData.emailId === '') {
@@ -87,14 +95,25 @@ export const handleRegistrationBtnClick = async (
     return;
   } else {
     const url = `${PUBLIC_API_URL}register-${registrationType}`;
+    const bodyPayload: {
+      emailId: string;
+      name: string;
+      phoneNo: string;
+      companyId?: string;
+      registeredBy?: string;
+    } = {
+      emailId: formData.emailId,
+      name: formData.name,
+      phoneNo: formData.phoneNo,
+    };
+    if (registrationType === 'user') {
+      bodyPayload['companyId'] = formData.companyId;
+    } else {
+      bodyPayload['registeredBy'] = formData.registeredBy;
+    }
     fetch(url, {
       method: 'POST',
-      body: JSON.stringify({
-        emailId: formData.emailId,
-        name: formData.name,
-        phoneNo: formData.phoneNo,
-        registeredBy: formData.registeredBy,
-      }),
+      body: JSON.stringify(bodyPayload),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

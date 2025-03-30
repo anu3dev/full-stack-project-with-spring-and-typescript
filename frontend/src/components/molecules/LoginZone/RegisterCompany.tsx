@@ -4,7 +4,13 @@ import { handleRegistrationBtnText, handleRegistrationBtnClick } from './Utils'
 const RegisterCompany: React.FC = () => {
   const [helperTextMessage, setHelperTextMessage] = useState('')
   const [otpVerified, setOtpVerified] = useState(false)
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    emailId: string;
+    otpValue: string;
+    name: string;
+    phoneNo: string;
+    registeredBy?: string;
+  }>({
     emailId: '',
     otpValue: '',
     name: '',
