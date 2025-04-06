@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { handleLoginBtnClick} from './Utils'
+import { handleLoginBtnClick } from './Utils'
 
 const Login: React.FC = () => {
   const [helperTextMessage, setHelperTextMessage] = useState('')
@@ -9,12 +9,12 @@ const Login: React.FC = () => {
   })
 
   const handleFormValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prevData => ({
+    const { name, value } = e.target
+    setFormData((prevData) => ({
       ...prevData,
       [name]: value,
-    }));
-  };
+    }))
+  }
 
   const handleBtnClick = () => {
     handleLoginBtnClick(setHelperTextMessage, formData)
@@ -25,10 +25,22 @@ const Login: React.FC = () => {
       <h2>Login here:</h2>
       <form>
         <label htmlFor="email">Your email:</label>
-        <input type="text" name="emailId" value={formData.emailId} placeholder="Enter your email ID please..." onChange={handleFormValueChange} />
+        <input
+          type="text"
+          name="emailId"
+          value={formData.emailId}
+          placeholder="Enter your email ID please..."
+          onChange={handleFormValueChange}
+        />
 
         <label htmlFor="password">Your password:</label>
-        <input type="password" name="password" value={formData.password} placeholder="Enter your password please..." onChange={handleFormValueChange} />
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          placeholder="Enter your password please..."
+          onChange={handleFormValueChange}
+        />
 
         {helperTextMessage && (
           <p className="helpher-text">

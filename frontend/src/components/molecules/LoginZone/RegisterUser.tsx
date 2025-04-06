@@ -5,32 +5,32 @@ const RegisterUser: React.FC = () => {
   const [helperTextMessage, setHelperTextMessage] = useState('')
   const [otpVerified, setOtpVerified] = useState(false)
   const [formData, setFormData] = useState<{
-    emailId: string;
-    otpValue: string;
-    name: string;
-    phoneNo: string;
-    companyId?: string;
-    registeredBy?: string;
+    emailId: string
+    otpValue: string
+    name: string
+    phoneNo: string
+    companyId?: string
+    registeredBy?: string
   }>({
     emailId: '',
     otpValue: '',
     name: '',
     phoneNo: '',
     companyId: '',
-  });
-  const [companyList, setCompanyList] = useState<string[]>([]);
+  })
+  const [companyList, setCompanyList] = useState<string[]>([])
 
   useEffect(() => {
     getCompanyListName(setCompanyList)
-  }, []);
+  }, [])
 
   const handleFormValueChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prevData => ({
+    const { name, value } = e.target
+    setFormData((prevData) => ({
       ...prevData,
       [name]: value,
-    }));
-  };
+    }))
+  }
 
   const handleBtnClick = () => {
     handleRegistrationBtnClick(setOtpVerified, setHelperTextMessage, formData, helperTextMessage, 'user', setFormData)
@@ -43,47 +43,73 @@ const RegisterUser: React.FC = () => {
       ) : (
         <>
           <h2>User registration:</h2>
-      <form>
-        <label htmlFor="email">Your email:</label>
-        <input type="text" name="emailId" value={formData.emailId} placeholder="Enter your email ID please..." onChange={handleFormValueChange} />
-        
-        {(helperTextMessage === `It's time to check your inbox for OTP.` || helperTextMessage === `Entered OTP is invalid.`) && !otpVerified && (
-          <>
-            <label htmlFor="otp">Enter OTP:</label>
-            <input type="text" name="otpValue" value={formData.otpValue} placeholder='Enter OTP please...' onChange={handleFormValueChange} />
-          </>
-        )}
+          <form>
+            <label htmlFor="email">Your email:</label>
+            <input
+              type="text"
+              name="emailId"
+              value={formData.emailId}
+              placeholder="Enter your email ID please..."
+              onChange={handleFormValueChange}
+            />
 
-        {helperTextMessage && (
-          <p className="helpher-text">
-            <span>&#8727; &nbsp;</span>
-            {helperTextMessage}
-          </p>
-        )}
+            {(helperTextMessage === `It's time to check your inbox for OTP.` ||
+              helperTextMessage === `Entered OTP is invalid.`) &&
+              !otpVerified && (
+                <>
+                  <label htmlFor="otp">Enter OTP:</label>
+                  <input
+                    type="text"
+                    name="otpValue"
+                    value={formData.otpValue}
+                    placeholder="Enter OTP please..."
+                    onChange={handleFormValueChange}
+                  />
+                </>
+              )}
 
-        {otpVerified && (
-          <>
-            <label htmlFor="company">Select company:</label>
-            <select name="companyId" value={formData.companyId} onChange={handleFormValueChange}>
-              <option value="">Select a company</option>
-              {companyList.map((company, index) => (
-                <option key={index} value={company}>
-                  {company}
-                </option>
-              ))}
-            </select>
+            {helperTextMessage && (
+              <p className="helpher-text">
+                <span>&#8727; &nbsp;</span>
+                {helperTextMessage}
+              </p>
+            )}
 
-            <label htmlFor="company">Your name:</label>
-            <input type="text" name="name" value={formData.name} placeholder='Enter your name please...' onChange={handleFormValueChange} />
+            {otpVerified && (
+              <>
+                <label htmlFor="company">Select company:</label>
+                <select name="companyId" value={formData.companyId} onChange={handleFormValueChange}>
+                  <option value="">Select a company</option>
+                  {companyList.map((company, index) => (
+                    <option key={index} value={company}>
+                      {company}
+                    </option>
+                  ))}
+                </select>
 
-            <label htmlFor="mobile">Enter phone number:</label>
-            <input type="text" name="phoneNo" value={formData.phoneNo} placeholder='Enter your phone number please...' onChange={handleFormValueChange} />
-          </>
-        )}
-        <button type="button" onClick={handleBtnClick}>
-          {handleRegistrationBtnText(helperTextMessage, otpVerified)}
-        </button>
-      </form>
+                <label htmlFor="company">Your name:</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  placeholder="Enter your name please..."
+                  onChange={handleFormValueChange}
+                />
+
+                <label htmlFor="mobile">Enter phone number:</label>
+                <input
+                  type="text"
+                  name="phoneNo"
+                  value={formData.phoneNo}
+                  placeholder="Enter your phone number please..."
+                  onChange={handleFormValueChange}
+                />
+              </>
+            )}
+            <button type="button" onClick={handleBtnClick}>
+              {handleRegistrationBtnText(helperTextMessage, otpVerified)}
+            </button>
+          </form>
         </>
       )}
       <div className="additional-links">

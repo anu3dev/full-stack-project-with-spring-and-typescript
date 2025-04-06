@@ -5,29 +5,36 @@ const RegisterCompany: React.FC = () => {
   const [helperTextMessage, setHelperTextMessage] = useState('')
   const [otpVerified, setOtpVerified] = useState(false)
   const [formData, setFormData] = useState<{
-    emailId: string;
-    otpValue: string;
-    name: string;
-    phoneNo: string;
-    registeredBy?: string;
+    emailId: string
+    otpValue: string
+    name: string
+    phoneNo: string
+    registeredBy?: string
   }>({
     emailId: '',
     otpValue: '',
     name: '',
     phoneNo: '',
     registeredBy: '',
-  });
+  })
 
   const handleFormValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prevData => ({
+    const { name, value } = e.target
+    setFormData((prevData) => ({
       ...prevData,
       [name]: value,
-    }));
-  };
+    }))
+  }
 
   const handleBtnClick = () => {
-    handleRegistrationBtnClick(setOtpVerified, setHelperTextMessage, formData, helperTextMessage, 'company', setFormData)
+    handleRegistrationBtnClick(
+      setOtpVerified,
+      setHelperTextMessage,
+      formData,
+      helperTextMessage,
+      'company',
+      setFormData,
+    )
   }
 
   return (
@@ -37,45 +44,77 @@ const RegisterCompany: React.FC = () => {
       ) : (
         <>
           <h2>Company registration:</h2>
-      <form>
-        <label htmlFor="email">Your email:</label>
-        <input type="text" name="emailId" value={formData.emailId} placeholder="Enter your email ID please..." onChange={handleFormValueChange} />
-        
-        {(helperTextMessage === `It's time to check your inbox for OTP.` || helperTextMessage === `Entered OTP is invalid.`) && !otpVerified && (
-          <>
-            <label htmlFor="otp">Enter OTP:</label>
-            <input type="text" name="otpValue" value={formData.otpValue} placeholder='Enter OTP please...' onChange={handleFormValueChange} />
-          </>
-        )}
+          <form>
+            <label htmlFor="email">Your email:</label>
+            <input
+              type="text"
+              name="emailId"
+              value={formData.emailId}
+              placeholder="Enter your email ID please..."
+              onChange={handleFormValueChange}
+            />
 
-        {helperTextMessage && (
-          <p className="helpher-text">
-            <span>&#8727; &nbsp;</span>
-            {helperTextMessage}
-          </p>
-        )}
+            {(helperTextMessage === `It's time to check your inbox for OTP.` ||
+              helperTextMessage === `Entered OTP is invalid.`) &&
+              !otpVerified && (
+                <>
+                  <label htmlFor="otp">Enter OTP:</label>
+                  <input
+                    type="text"
+                    name="otpValue"
+                    value={formData.otpValue}
+                    placeholder="Enter OTP please..."
+                    onChange={handleFormValueChange}
+                  />
+                </>
+              )}
 
-        {otpVerified && (
-          <>
-            <label htmlFor="company">Company name:</label>
-            <input type="text" name="name" value={formData.name} placeholder='Enter your company name please...' onChange={handleFormValueChange} />
+            {helperTextMessage && (
+              <p className="helpher-text">
+                <span>&#8727; &nbsp;</span>
+                {helperTextMessage}
+              </p>
+            )}
 
-            <label htmlFor="mobile">Enter phone number:</label>
-            <input type="text" name="phoneNo" value={formData.phoneNo} placeholder='Enter your phone number please...' onChange={handleFormValueChange} />
+            {otpVerified && (
+              <>
+                <label htmlFor="company">Company name:</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  placeholder="Enter your company name please..."
+                  onChange={handleFormValueChange}
+                />
 
-            <label htmlFor="mobile">Enter your name:</label>
-            <input type="text" name="registeredBy" value={formData.registeredBy} placeholder='Enter your name please...' onChange={handleFormValueChange} />
+                <label htmlFor="mobile">Enter phone number:</label>
+                <input
+                  type="text"
+                  name="phoneNo"
+                  value={formData.phoneNo}
+                  placeholder="Enter your phone number please..."
+                  onChange={handleFormValueChange}
+                />
 
-            {/* <label htmlFor="password">Enter password:</label>
+                <label htmlFor="mobile">Enter your name:</label>
+                <input
+                  type="text"
+                  name="registeredBy"
+                  value={formData.registeredBy}
+                  placeholder="Enter your name please..."
+                  onChange={handleFormValueChange}
+                />
+
+                {/* <label htmlFor="password">Enter password:</label>
             <input type="text" id="password" name="password" required />
             <label htmlFor="password">Confirm password:</label>
             <input type="text" id="password" name="password" required /> */}
-          </>
-        )}
-        <button type="button" onClick={handleBtnClick}>
-          {handleRegistrationBtnText(helperTextMessage, otpVerified)}
-        </button>
-      </form>
+              </>
+            )}
+            <button type="button" onClick={handleBtnClick}>
+              {handleRegistrationBtnText(helperTextMessage, otpVerified)}
+            </button>
+          </form>
         </>
       )}
       <div className="additional-links">
