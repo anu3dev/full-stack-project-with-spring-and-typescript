@@ -1,6 +1,7 @@
 package com.anu3dev.backend.controller;
 
 import com.anu3dev.backend.model.Company;
+import com.anu3dev.backend.model.LoginApiResponse;
 import com.anu3dev.backend.model.User;
 import com.anu3dev.backend.service.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class LoginController {
     private ILoginService loginService;
 
     @PostMapping("/login-user")
-    public String loginUser(@RequestBody User user) {
+    public LoginApiResponse loginUser(@RequestBody User user) {
         return loginService.verifyUserLogin(user);
     }
 

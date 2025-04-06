@@ -4,6 +4,7 @@ import com.anu3dev.backend.dao.CompanyDao;
 import com.anu3dev.backend.dao.UserDao;
 import com.anu3dev.backend.exception.ResourceNotFoundException;
 import com.anu3dev.backend.model.Company;
+import com.anu3dev.backend.model.LoginApiResponse;
 import com.anu3dev.backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,12 +33,32 @@ public class LoginService implements ILoginService {
     AuthenticationManager authManager;
 
     @Override
-    public String verifyUserLogin(User user) {
+    public LoginApiResponse verifyUserLogin(User user) {
         Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmailId(), user.getPassword()));
         if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(user.getEmailId());
+            User userObj = userDao.findByEmailId(user.getEmailId());
+
+            String firstName;
+            if (userObj.getName() == null || userObj.getName().isEmpty()) {
+                firstName = "";
+            } else {
+                String firstNameFromDB = userObj.getName().split(" ")[0];
+                firstName = firstNameFromDB.substring(0, 1).toUpperCase() + firstNameFromDB.substring(1);
+            }
+
+            String role;
+            if(Objects.equals(userObj.getIsAdmin(), "true") && Objects.equals(userObj.getCompanyId(), "290905")) {
+                role = "superAdmin";
+            } else if (Objects.equals(userObj.getIsAdmin(), "true") && !Objects.equals(userObj.getCompanyId(), "290905")) {
+                role = "admin";
+            } else if (!Objects.equals(userObj.getIsAdmin(), "true") && Objects.equals(userObj.getCompanyId(), "290905")) {
+                role = "superUser";
+            } else {
+                role = "user";
+            }
+            return new LoginApiResponse("Success", jwtService.generateToken(user.getEmailId()), firstName, role);
         } else {
-            return "Invalid email ID or password.";
+            return new LoginApiResponse("Invalid email ID or password.", "", "", "");
         }
     }
 

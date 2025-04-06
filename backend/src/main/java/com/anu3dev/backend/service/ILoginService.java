@@ -1,6 +1,7 @@
 package com.anu3dev.backend.service;
 
 import com.anu3dev.backend.model.Company;
+import com.anu3dev.backend.model.LoginApiResponse;
 import com.anu3dev.backend.model.User;
 import org.springframework.http.ResponseEntity;
 
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface ILoginService {
-    String verifyUserLogin(User user);
+    LoginApiResponse verifyUserLogin(User user);
     String registerCompany(Company company) throws Exception;
     List<Company> getCompanyList();
     List<Company> getApprovedCompanyList();

@@ -136,6 +136,24 @@ export const handleRegistrationBtnClick = async (
   }
 }
 
+export const getCompanyListName = (setCompanyName: (companyNames: string[]) => void): Promise<void> => {
+  const url = `${PUBLIC_API_URL}company-list`;
+  return fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+  })
+  .then((response) => response.json())
+  .then ((resp) => {
+    setCompanyName(resp);
+  })
+  .catch(() => {
+    setCompanyName([]);
+  });
+}
+
 export const handleLoginBtnClick = async (
   setHelperTextMessage: (value: string) => void,
   formData: { [key: string]: string }
@@ -161,7 +179,7 @@ export const handleLoginBtnClick = async (
     })
     .then((response) => {
       if (response.status === 200) {
-        return response.text();
+        return response.json();
       } else {
         setHelperTextMessage('Invalid email ID or password.');
         throw new Error('Invalid email ID or password.');
@@ -169,7 +187,9 @@ export const handleLoginBtnClick = async (
     })
     .then((resp) => {
       if (resp) {
-        window.sessionStorage.setItem('AccessToken', resp);
+        window.sessionStorage.setItem('AccessToken', resp?.accessToken);
+        window.sessionStorage.setItem('FirstName', resp?.firstName);
+        window.sessionStorage.setItem('Role', resp?.role);
         window.location.assign('/dashboard'); 
       } else {
         setHelperTextMessage('Invalid email ID or password.');
@@ -179,22 +199,4 @@ export const handleLoginBtnClick = async (
       setHelperTextMessage(e.message);
     });
   }
-}
-
-export const getCompanyListName = (setCompanyName: (companyNames: string[]) => void): Promise<void> => {
-  const url = `${PUBLIC_API_URL}company-list`;
-  return fetch(url, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-  })
-  .then((response) => response.json())
-  .then ((resp) => {
-    setCompanyName(resp);
-  })
-  .catch(() => {
-    setCompanyName([]);
-  });
 }
