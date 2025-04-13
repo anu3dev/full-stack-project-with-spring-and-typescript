@@ -120,7 +120,7 @@ public class JWTFilterConfig extends OncePerRequestFilter {
 					SecurityContextHolder.getContext().setAuthentication(authToken);
 				}
 			} catch (UsernameNotFoundException exception) {
-				throw new UsernameNotFoundException("heelo");
+				throw new UsernameNotFoundException("hello");
 			}
 		}
 

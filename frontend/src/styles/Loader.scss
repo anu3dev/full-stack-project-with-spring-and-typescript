@@ -2,16 +2,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: -webkit-fill-available;
   background-color: #f5f8f9;
+  margin: 0 0 4rem 0;
 
-  &__circular-loader {
-    border: .5rem solid #f3f3f3;
-    border-top: .5rem solid $primary-color;
-    border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
-    animation: spin 1s linear infinite;
+  &__content {
+    &__circular-loader {
+      border: 0.5rem solid #f3f3f3;
+      border-top: 0.5rem solid $primary-color;
+      border-radius: 50%;
+      width: 5rem;
+      height: 5rem;
+      animation: spin 1s linear infinite;
+    }
+    p {
+      margin: 1rem 0 0 -1rem;
+    }
   }
 }
 

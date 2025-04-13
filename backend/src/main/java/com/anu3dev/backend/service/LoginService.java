@@ -78,29 +78,6 @@ public class LoginService implements ILoginService {
 
 
 
-    @Override
-    public String registerCompany(Company company) throws Exception {
-        if(loginDao.existsByEmailId(company.getEmailId())) {
-            return "Company with email " + company.getEmailId() + " already exists.";
-        }
-        company.setUniqueId(generateUniqueCompanyId());
-        loginDao.save(company);
-        return "Company registered successfully with unique id: " + company.getUniqueId();
-    }
-
-    private String generateUniqueCompanyId() {
-        String uniqueId;
-        do {
-            uniqueId = generateRandom6DigitNumber();
-        } while (loginDao.existsByUniqueId(uniqueId));
-        return uniqueId;
-    }
-
-    private String generateRandom6DigitNumber() {
-        final SecureRandom random = new SecureRandom();
-        int number = random.nextInt(900000) + 100000; // Generates a number between 100000 and 999999
-        return String.valueOf(number);
-    }
 
     public List<Company> getCompanyList() {
         List<Company> companyList = loginDao.findAll();

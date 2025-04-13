@@ -10,7 +10,6 @@ import java.util.Map;
 
 public interface ILoginService {
     LoginApiResponse verifyUserLogin(User user);
-    String registerCompany(Company company) throws Exception;
     List<Company> getCompanyList();
     List<Company> getApprovedCompanyList();
     String registerUser(User user) throws Exception;

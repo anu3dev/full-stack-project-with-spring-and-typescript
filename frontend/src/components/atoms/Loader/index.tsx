@@ -1,10 +1,10 @@
 const Loader: React.FC = () => {
   return (
-    <div>
-      <div className="loader-screen">
-        <div className="loader-screen__circular-loader"></div>
+    <div className="loader-screen">
+      <div className="loader-screen__content">
+        <div className="loader-screen__content__circular-loader"></div>
+        <p>It won't take long.</p>
       </div>
-      <p>It won't tale long.</p>
     </div>
   )
 }
